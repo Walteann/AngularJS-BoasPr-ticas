@@ -1,0 +1,38 @@
+<!-- 
+    - crie 1 filtro que receba um horario entre 0:00 e 23:59 e diga:
+
+    bom dia. ate 12:00
+    boa tarde ate as 18:0
+    boa noite
+-->
+<!DOCTYPE html>
+<html lang="en" data-ng-app="WalModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <label for="hora">Horario:   
+        <input type="time" data-ng-model="hora">
+    </label><br><br>
+
+    {{hora}}
+
+    <script src="../angular.min.js"></script>
+    <script>
+       angular.module("WalModule", [])
+            /* .filter("qualHorario", function()   {
+                return function(horario)    {
+                    if(horario) {
+                        if(horario)
+                    }
+                }
+            }) */
+            
+
+    </script>
+
+    
+</body>
+</html>

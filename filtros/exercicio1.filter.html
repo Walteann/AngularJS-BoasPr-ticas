@@ -1,0 +1,35 @@
+<!-- 
+    - Crie 1 filtro onde você passa em input uma idade e ele diga se você
+    é de maior ou menor que 18 anos
+-->
+<!DOCTYPE html>
+<html lang="en" data-ng-app="WalModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <label for="idade">sua idade:   
+        <input type="text" data-ng-model="idade">
+    </label>
+
+    {{idade | verificaIdade}}
+
+    <script src="../angular.min.js"></script>
+    <script>
+       angular.module("WalModule", [])
+            .filter("verificaIdade", function() {
+                return function(idade)  {
+                    if(idade)   {
+                        if(idade >= 18) return String(idade) + " Você Maior de idade";
+                        else return String(idade) + " Você é menor de idade";
+                    }
+                }
+            });
+
+    </script>
+
+    
+</body>
+</html>

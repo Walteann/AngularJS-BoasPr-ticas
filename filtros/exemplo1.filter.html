@@ -1,0 +1,34 @@
+<!--
+    - Como Criar proprios filtros.
+    - inverterString é um filtro criado.
+    - uppercase é um filtro do angular
+ -->
+<!DOCTYPE html>
+<html lang="en" data-ng-app="WalModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <label for="nome">Seu nome: 
+        <input type="text" data-ng-model="nome">
+    </label>
+
+    Ola, {{nome | inveterString | uppercase}}  
+
+
+    <script src="../angular.min.js"></script>
+    <script>
+        angular.module("WalModule", [])
+            .filter("inveterString", function() {
+                return function(text)   {
+                    if(text) return text.split("").reverse().join("");
+                }
+            });
+
+    </script>
+
+    
+</body>
+</html>
