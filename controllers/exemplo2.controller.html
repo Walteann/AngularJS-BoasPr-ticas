@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="WalModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body data-ng-controller="UsuarioController">
+
+    <h1>{{ titulo }}</h1>
+
+    <ul>
+        <li data-ng-repeat="usuario in usuarios">
+            {{ usuario.nome }} - {{ usuario.email }}
+        </li>
+    </ul>
+
+    <div data-ng-controller="CursoController">
+        <ul>
+            <li data-ng-repeat="curso in cursos">
+                {{ curso.nome }} - {{ curso.professor }}
+            </li>
+        </ul>
+    </div>
+
+    <script src="../angular.min.js"></script>
+    <script>
+        angular.module("WalModule", [])
+            .controller("UsuarioController", UserController)
+            .controller("CursoController", CursoController);
+
+            function UserController($scope) {
+                $scope.titulo = "Lista de Erivi";
+
+                $scope.usuarios = [
+                    {nome: 'Erividiane', email: 'erivi@email.com'},
+                    {nome: 'silva', email: 'silva@email.com'},
+                    {nome: 'costa', email: 'costa@email.com'},
+                    {nome: 'santos', email: 'santos@email.com'},
+                    {nome: 'espirito', email: 'espirito@email.com'}
+                ];
+            }
+
+            UserController['$inject'] = ['$scope']; 
+
+            function CursoController($scope)    {
+                $scope.cursos = [
+                    {nome: 'JavaScript', professor: 'erivi'},
+                    {nome: 'AngularJS', professor: 'Wal'},
+                    {nome: 'Learning Machine', professor: 'evi'},
+                    {nome: 'Java', professor: 'Alguem'},
+                    {nome: 'PHP', professor: 'Outro Alguem'},
+                   
+                ];
+            }
+
+            CursoController['$inject'] = ["$scope"]
+            
+
+    </script>
+
+    
+</body>
+</html>
+
+<!-- 
+    Maneira NAO recomendada
+
+
+    angular.module("WalModule", [])
+            .controller("UsuarioController", function($scope)   {
+                $scope.titulo = "Walteannn"
+            });
+
+-->

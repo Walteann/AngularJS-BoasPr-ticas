@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="WalModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body data-ng-controller="UsuarioController">
+
+    <h1>{{ titulo }}</h1>
+
+    <ul>
+        <li data-ng-repeat="usuario in usuarios">
+            {{ usuario.nome }} - {{ usuario.email }}
+        </li>
+    </ul>
+
+    <script src="../angular.min.js"></script>
+    <script>
+        angular.module("WalModule", [])
+            .controller("UsuarioController", UserController);
+
+            function UserController($scope) {
+                $scope.titulo = "Lista de Erivi";
+
+                $scope.usuarios = [
+                    {nome: 'Erividiane', email: 'erivi@email.com'},
+                    {nome: 'silva', email: 'silva@email.com'},
+                    {nome: 'costa', email: 'costa@email.com'},
+                    {nome: 'santos', email: 'santos@email.com'},
+                    {nome: 'espirito', email: 'espirito@email.com'}
+                ];
+            }
+
+            UserController['$inject'] = ['$scope']; 
+            
+
+    </script>
+
+    
+</body>
+</html>
+
+<!-- 
+    Maneira NAO recomendada
+
+
+    angular.module("WalModule", [])
+            .controller("UsuarioController", function($scope)   {
+                $scope.titulo = "Walteannn"
+            });
+
+-->

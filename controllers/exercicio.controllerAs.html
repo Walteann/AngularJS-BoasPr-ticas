@@ -1,0 +1,55 @@
+<!-- 
+
+    * Criar um  Controller de Professores, igual aos exemplos e seguir o Padrao Controller AS
+
+    * Utilizar Filtro criado nos exemplos de filtros.
+
+-->
+
+<!DOCTYPE html>
+<html lang="en" data-ng-app="ExercicioController">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="../angular.min.js"></script>
+</head>
+<body data-ng-controller="ExerController as ThisDoController">
+
+    <h1>{{ ThisDoController.titulo }}</h1>
+
+    <ul>
+        <li data-ng-repeat="professor in ThisDoController.professores">
+            {{ professor.nome | isProfessor:professor.nome}}
+        </li>
+    </ul>
+    <script>
+    
+        angular.module("ExercicioController",[])
+            .controller("ExerController", ExerController)
+            .filter("isProfessor", function()   {
+                return function(prof)   {
+                    if(prof) {
+                        if(prof === "Roberto") return String(prof);
+                    }
+                }
+            });
+
+            function ExerController()   {
+                var vm = this;
+                vm.titulo = "Lista de Professores";
+                vm.professores = [
+                    {nome: "Roberto", disciplina:"Java"},
+                    {nome: "Rodolfo", disciplina:"PHP"},
+                    {nome: "Roberto", disciplina:"JavaScript"},
+                    {nome: "Tiago", disciplina:"C#"}
+                    
+                ]
+            }
+
+    </script>
+    
+</body>
+</html>
